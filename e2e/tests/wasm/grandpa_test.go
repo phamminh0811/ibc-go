@@ -816,6 +816,7 @@ func (s *GrandpaTestSuite) allowWasmClients(ctx context.Context, chain ibc.Chain
 	s.Require().NotNil(govModuleAddress)
 
 	allowedClients = append(allowedClients, wasmtypes.Wasm)
+	println(allowedClients)
 	if testvalues.SelfParamsFeatureReleases.IsSupported(chain.Config().Images[0].Version) {
 		msg := clienttypes.NewMsgUpdateParams(govModuleAddress.String(), clienttypes.NewParams(allowedClients...))
 		s.ExecuteAndPassGovV1Proposal(ctx, msg, chain, wallet)
